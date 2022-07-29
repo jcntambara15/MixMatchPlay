@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <h1>Conversion page</h1>
+    <div class="content-section">
+        <form class="form-login" method="POST" action="/search_for_hotel">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <!-- Link Field -->
+                <div class="form-group">
+                    {{ form.link.label(class="form-control-label") }}
+                    {% if form.link.errors %}
+                        {{ form.link(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                        {% for error in form.link.errors%}
+                            <span>{{error}}</span>
+                        {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.link(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info") }}
+                </div>
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}

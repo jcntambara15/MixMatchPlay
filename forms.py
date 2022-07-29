@@ -27,4 +27,10 @@ class LoginForm(FlaskForm):
 
     submit = SubmitField('Log In')
 
+class SearchForm(FlaskForm):
+    link = StringField('Spotify Link',
+                       validators=[DataRequired()])
+
+    submit = SubmitField('Submit')
+
 
