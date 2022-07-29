@@ -1,11 +1,10 @@
 #this is the demo/main file
 from flask import Flask, render_template, url_for, flash, redirect
-from forms import RegistrationForm, LoginForm, SearchForm, HotelForm
+from forms import RegistrationForm, LoginForm
 from flask_behind_proxy import FlaskBehindProxy
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-from functions import find_hotel, dict_to_html, get_hotel_rate
 
 
 app = Flask(__name__)
@@ -17,7 +16,7 @@ app.config['SECRET_KEY'] = '0ea0fddf88db1442bf02fd39c2ea5e5d'
 # login_manager.login_view = 'login'
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user.db'
 db = SQLAlchemy(app)
 # engine = db.create_engine('sqlite:///site.db')
 
@@ -30,48 +29,49 @@ class User(db.Model):
   def __repr__(self):
     return f"User('{self.username}', '{self.email}', '{self.password}')"
 
-
 # @login_manager.user_loader
 # def load_user(user_id):
 #     return User.query.get(int(user_id))
 
 
-@app.route("/register", methods=['GET', 'POST'])
-def register():
+@app.route("/sign_up", methods=['GET', 'POST'])
+def signUp():
     form = RegistrationForm()
     if form.validate_on_submit(): # checks if entries are valid
         hashed_password = generate_password_hash(form.password.data)
         user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
-        flash(f'Account created for {form.username.data}!', 'success')
-        return redirect(url_for('search_for_hotel')) # if so - send to home page
-    return render_template('register.html', title='Register', form=form)
+        # flash(f'Account created for {form.username.data}!', 'success')
+        # return redirect(url_for('home')) # if so - send to home page
+        return '<h1>' + 'New user: ' + form.username.data + ' with email: ' + form.email.data + ' has been created!' + '</h1>'
+        #return '<h1>' + form.username.data + ' ' + form.email.data + ' ' + form.password.data + '</h1>'
+    return render_template('sign_up.html', title='Sign Up an account with us', form=form)
 
-
-@app.route("/login", methods=['GET', 'POST'])
-def login():
+@app.route("/sign_in", methods=['GET', 'POST'])
+def SignIn():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user:
             if check_password_hash(user.password, form.password.data):
                 # login_user(user, remember=form.remember.data)
-                return redirect(url_for("search_for_hotel"))
+                return redirect(url_for("home"))
 
         return '<h1>Invalid username or password</h1>'
 
-    return render_template('login.html', form=form)
-
+    return render_template('sign_in.html', form=form)
 
 @app.route("/")
 @app.route("/home")
 def home():
     return render_template('home.html', subtitle='Home Page', text='This is the home page')
 
-@app.route("/about_us")
-def about_us():
-    return render_template('about_us.html', subtitle='About Us page', text='This is the about us page')
+@app.route('/sign_out')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")
 
