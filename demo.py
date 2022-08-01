@@ -11,16 +11,15 @@ app = Flask(__name__)
 proxied = FlaskBehindProxy(app)
 app.config['SECRET_KEY'] = '0ea0fddf88db1442bf02fd39c2ea5e5d'
 
-# login_manager = LoginManager()
-# login_manager.init_app(app)
-# login_manager.login_view = 'login'
-
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'signIn'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user.db'
 db = SQLAlchemy(app)
 # engine = db.create_engine('sqlite:///site.db')
 
-class User(db.Model):
+class User(UserMixin, db.Model):
   id = db.Column(db.Integer, primary_key=True)
   username = db.Column(db.String(20), unique=True, nullable=False)
   email = db.Column(db.String(120), unique=True, nullable=False)
@@ -29,9 +28,9 @@ class User(db.Model):
   def __repr__(self):
     return f"User('{self.username}', '{self.email}', '{self.password}')"
 
-# @login_manager.user_loader
-# def load_user(user_id):
-#     return User.query.get(int(user_id))
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 @app.route("/sign_up", methods=['GET', 'POST'])
@@ -43,38 +42,40 @@ def signUp():
         db.session.add(user)
         db.session.commit()
         flash(f'Account created for {form.username.data}!', 'success')
-        return redirect(url_for('link_entry')) # if so - send to home page
+        return redirect(url_for('home')) # if so - send to home page
        
     return render_template('sign_up.html', title='Sign Up an account with us', form=form)
 
 @app.route("/sign_in", methods=['GET', 'POST'])
-def SignIn():
+def signIn():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user:
             if check_password_hash(user.password, form.password.data):
-                # login_user(user, remember=form.remember.data)
+                login_user(user, remember=form.remember.data)
                 return redirect(url_for("link_entry"))
 
-        return '<h1>Invalid username or password</h1>'
+        # return '<h1>Invalid username or password</h1>'
+        flash(f'Invalid username or password')
 
     return render_template('sign_in.html', form=form)
 
 @app.route("/link_entry", methods=['GET', 'POST'])
+@login_required
 def link_entry():
     form = SearchForm()
     if form.validate_on_submit():
         link = form.link.data
         return render_template('link_entry.html', form=form, hotel_info = city_info)
-    return render_template('link_entry.html', form=form)
+    return render_template('link_entry.html', form=form, name=current_user.username)
 
 @app.route("/")
 @app.route("/home")
 def home():
     return render_template('home.html', subtitle='Home Page', text='This is the home page')
 
-@app.route('/sign_out')
+@app.route('/logout')
 @login_required
 def logout():
     logout_user()

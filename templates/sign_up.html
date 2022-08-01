@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
     <div class="content-section">
+      <p>Sign Up to Mix Match Play</p>
         <form class="form-register" method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
@@ -58,6 +59,7 @@
           {{ form.confirm_password(class="form-control form-control-lg") }}
       {% endif %}
     </div>
+    <p>Already have an account? <a href="{{ url_for('signIn') }}">Click here to log in</a></p>
 </fieldset>
            <div class="form-group">
              {{ form.submit(class="btn btn-outline-info") }}
