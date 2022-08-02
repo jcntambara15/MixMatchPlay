@@ -74,9 +74,9 @@ def add_spotify_playlist(spotifyPlaylist):
     
     createTable = ("CREATE TABLE IF NOT EXISTS " + str(spotifyPlaylist.playlist_name) + "(" + 
                 "id integer primary key autoincrement,"+
-                "song text"+
+                "song text,"+
                 "artists text,"+
-                "album text" +
+                "album text," +
                 "apple_music_id text"+
                 "spotify_song_id text);")
 
