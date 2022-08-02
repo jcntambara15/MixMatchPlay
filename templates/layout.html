@@ -4,31 +4,153 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" type="text/css" href="custom.css"> -->
+  <!-- <link rel="stylesheet" type="text/css" href='custom.css'> -->
+  <style>
+  
+
+    .content-section.signin > form {
+      width:60%!important;
+      margin: auto!important;
+    }
+
+    .content-section.signin > form  .form-group{
+      padding-bottom:1.5em!important;
+    }
+
+    .content-section.signup > form {
+      width:60%!important;
+      margin: auto!important;
+    }
+
+    .content-section.signup > form  .form-group{
+      padding-bottom:1.5em!important;
+    }
+
+
+     .content-section.linkEntry > form {
+      width:60%!important;
+      margin: auto!important;
+    }
+
+     .content-section.linkEntry > form {
+      padding-bottom:2.5em!important;
+    }
+
+    .alert.customAlertMessage {
+      text-align: center!important;
+      color: red!important;
+      font-weight: bold!important;
+    }
+
+    .pageHeader {
+      text-align: center;
+      font-size: 1.5em;
+      font-weight: bold;
+      padding: 1em 0;
+    }
+
+    .logoutNavItem {
+      padding:0px 12px;
+      width: 120px
+    }
+
+    .logoutNavItem > a {
+      width: auto;
+      color: #ffffff8c;
+      padding:8px;
+      text-decoration: none;
+      transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+    }
+
+    .main {
+      width:60%!important;
+      margin: auto!important;
+      padding-bottom:1.2em!important;
+
+    }
+
+    .form-group.sbmtbutton {
+      display: flex !important;
+      align-items: center!important;
+      justify-content: center !important;
+      align-items: center !important;
+      height: 55px !important;
+    }
+
+    .page-header {
+      text-align: center!important;
+      font-weight: bold;
+      font-size: 2em;
+    }
+
+    .convertmsg {
+      text-align: center;
+    }
+
+    .navbar {
+      font-size: 1em !important;
+    }
+
+    .siteName {
+      font-size: 2em;
+      font-weight:bold;
+      text-align: left;
+    }
+
+    body {
+      background-color:#504E57!important;
+      color: white!important;
+      margin: auto 10px;
+      width: auto;
+      background-size: cover;
+    }
+  </style>
 </head>
 <body>
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <ul class="navbar-nav customNavContainer">
+         <li class="nav-item">
+          <p class="nav-link siteName">MixMatchPlay</p>
+        </li>
+    </ul>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+      <div class="logoutNavItem">
+            
+      </div>
+      <ul class="navbar-nav customNavContainer">
+         
         <li class="nav-item active">
           <a class="nav-link" href="/home">Home</a>
         </li>
-        <li class="nav-item">
+
+        {% if current_user.is_authenticated %}
+         <li class="nav-item">
+          <a class="nav-link" href="/link_entry">Convert</a>
+        </li>
+         <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
+        </li>
+        {% else %}
+          <li class="nav-item">
           <a class="nav-link" href="/sign_up">Sign Up</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/sign_in">Sign In</a>
+        {% endif %}
       </ul>
+    
     </div>
   </nav>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {% for category, message in messages %}
-                <div class="alert alert-{{ category }}">
+                <div class="alert alert-{{ category }} customAlertMessage">
                     {{ message }}
                 </div>
             {% endfor %}
