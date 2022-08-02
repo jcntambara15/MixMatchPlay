@@ -66,7 +66,14 @@ def add_playlist_to_dash(playlist_name, spotify_url, apple_music_url):
     cursor.execute(command,(playlist_name, spotify_url, apple_music_url))
     conn.commit()
 
+def update_playlist(playlist_name):
+    command  = ("INSERT INTO " + str(playlist_name) + "(song, artists, album)" +
+                "VALUES (?, ?, ?);")
 
+def delete_playlist():
+
+def playlist_exists(playlist_name):
+    if 
     
 def add_spotify_playlist(spotifyPlaylist):
     conn = get_connection('database.db')
