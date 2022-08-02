@@ -1,6 +1,24 @@
 {% extends "layout.html" %}
 {% block content %}
+    <!-- <nav class="navbar navbar-inverse navbar-fixed-top"> -->
+      <!-- <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+          </button>
+        </div> -->
+        <!-- <div id="navbar" class="navbar-collapse collapse"> -->
+            <div>
+            <a href="{{ url_for('logout') }}">Log Out</a>
+        </div>
+      <!-- </div> -->
+    <!-- </nav> -->
 
+     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <p class="page-header">Welcome to MixMatchPlay, {{ name }}!</p>
+          <p><b>Enjoy keeping your Spotify playlist regardless of the web player you go to?<br> With MixMatchPlay, we've got you covered!</b></p>
+          <p>It's just magic, you can transfer your Spotify playlist to Apple Music here:</p>
+     </div>
     <h1>Conversion page</h1>
     <div class="content-section">
         <form class="form-login" method="POST" action="/search_for_hotel">
@@ -27,39 +45,4 @@
                 </div>
         </form>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {% endblock content %}

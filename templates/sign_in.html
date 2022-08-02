@@ -42,7 +42,8 @@ Login
                         {{ form.password(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
-
+                <!-- {{ form.remember.label(class="form-control-label") }} -->
+                <p>Don't have an account?<a href="{{ url_for('signUp') }}"> Click here to sign up</a></p>
                 <!-- Submit Button -->
                 <div class="form-group">
                     {{ form.submit(class="btn btn-outline-info") }}
