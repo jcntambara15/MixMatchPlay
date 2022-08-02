@@ -1,13 +1,15 @@
 {% extends "layout.html" %}
 {% block content %}
-
-    <div class="content-section">
-      <p>Sign Up to Mix Match Play</p>
+<body>
+    <div class="content-section signup body">
         <form class="form-register" method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
 
      <div class="form-group">
+       <div class="pageHeader">
+       <p>Sign Up to Mix Match Play</p>
+       </div>
      {{ form.username.label(class="form-control-label") }}
      {% if form.username.errors %}
        {{ form.username(class="form-control form-control-lg is-invalid") }}
@@ -68,4 +70,5 @@
             
          </form>
      </div>
-{% endblock content %}
+     <body>
+ {% endblock content %}

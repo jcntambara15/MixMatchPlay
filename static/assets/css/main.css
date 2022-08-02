@@ -1,7 +1,129 @@
-body{
-    background-color: ;
-    family-font: -apple-system,BlinkMacSystemFont,
+    .content-section.signin > form {
+      width:60%!important;
+      margin: auto!important;
+    }
+
+    .content-section.signin > form  .form-group{
+      padding-bottom:1.5em!important;
+    }
+
+    .content-section.signup > form {
+      width:60%!important;
+      margin: auto!important;
+    }
+
+    .content-section.signup > form  .form-group{
+      padding-bottom:1.5em!important;
+    }
+
+
+     .content-section.linkEntry > form {
+      width:60%!important;
+      margin: auto!important;
+    }
+
+     .content-section.linkEntry > form {
+      padding-bottom:2.5em!important;
+    }
+
+    .alert.customAlertMessage {
+      text-align: center!important;
+      color: red!important;
+      font-weight: bold!important;
+    }
+
+    .pageHeader {
+      text-align: center;
+      font-size: 1.5em;
+      font-weight: bold;
+      padding: 1em 0;
+    }
+
+    .logoutNavItem {
+      padding:0px 12px;
+      width: 120px
+    }
+
+    .logoutNavItem > a {
+      width: auto;
+      color: #ffffff8c;
+      padding:8px;
+      text-decoration: none;
+      transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+    }
+
+    .main {
+      width:60%!important;
+      margin: auto!important;
+      padding-bottom:1.2em!important;
+
+    }
+
+    .form-group.sbmtbutton {
+      display: flex !important;
+      align-items: center!important;
+      justify-content: center !important;
+      align-items: center !important;
+      height: 55px !important;
+    }
+
+    .page-header {
+      text-align: center!important;
+      font-weight: bold;
+      font-size: 2em;
+    }
+
+    .convertmsg {
+      text-align: center;
+    }
+
+    .navbar {
+      font-size: 1em !important;
+    }
+
+    .siteName {
+      font-size: 2em;
+      font-weight:bold;
+      text-align: left;
+    }
+
+    body {
+      background-color:#343434!important;
+      color: white!important;
+      margin: auto 10px;
+      width: auto;
+      background-size: cover;
+    }
+
+
+
+    .logo{
+  float: left
+}
+nav{
+  width: 100%;
+  height: 50px;
+  background-color: #0000;
+  line-height: 50px;
+  
+}
+nav .change{
+  float: right;
+  margin-right: 30px;
+}
+nav .change li{
+  list-style-type: none;
+  display: inline-block;
+  transition: 0.7s all;
+  family-font:  -apple-system,BlinkMacSystemFont,
     "Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",
     sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    font-color: white;
+}
+nav .change li:hover{
+  background-color:white;
+}
+nav .change li a{
+  text-decoration: none;
+  color: grey;
+  padding: 30px;
 }
