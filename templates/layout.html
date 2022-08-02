@@ -4,153 +4,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" type="text/css" href="custom.css"> -->
-  <!-- <link rel="stylesheet" type="text/css" href='custom.css'> -->
-  <style>
-  
-
-    .content-section.signin > form {
-      width:60%!important;
-      margin: auto!important;
-    }
-
-    .content-section.signin > form  .form-group{
-      padding-bottom:1.5em!important;
-    }
-
-    .content-section.signup > form {
-      width:60%!important;
-      margin: auto!important;
-    }
-
-    .content-section.signup > form  .form-group{
-      padding-bottom:1.5em!important;
-    }
-
-
-     .content-section.linkEntry > form {
-      width:60%!important;
-      margin: auto!important;
-    }
-
-     .content-section.linkEntry > form {
-      padding-bottom:2.5em!important;
-    }
-
-    .alert.customAlertMessage {
-      text-align: center!important;
-      color: red!important;
-      font-weight: bold!important;
-    }
-
-    .pageHeader {
-      text-align: center;
-      font-size: 1.5em;
-      font-weight: bold;
-      padding: 1em 0;
-    }
-
-    .logoutNavItem {
-      padding:0px 12px;
-      width: 120px
-    }
-
-    .logoutNavItem > a {
-      width: auto;
-      color: #ffffff8c;
-      padding:8px;
-      text-decoration: none;
-      transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
-    }
-
-    .main {
-      width:60%!important;
-      margin: auto!important;
-      padding-bottom:1.2em!important;
-
-    }
-
-    .form-group.sbmtbutton {
-      display: flex !important;
-      align-items: center!important;
-      justify-content: center !important;
-      align-items: center !important;
-      height: 55px !important;
-    }
-
-    .page-header {
-      text-align: center!important;
-      font-weight: bold;
-      font-size: 2em;
-    }
-
-    .convertmsg {
-      text-align: center;
-    }
-
-    .navbar {
-      font-size: 1em !important;
-    }
-
-    .siteName {
-      font-size: 2em;
-      font-weight:bold;
-      text-align: left;
-    }
-
-    body {
-      background-color:#504E57!important;
-      color: white!important;
-      margin: auto 10px;
-      width: auto;
-      background-size: cover;
-    }
-  </style>
+  <link rel="stylesheet" href="static/assets/css/main.css">
 </head>
 <body>
-  <!-- navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <ul class="navbar-nav customNavContainer">
-         <li class="nav-item">
-          <p class="nav-link siteName">MixMatchPlay</p>
-        </li>
-    </ul>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <div class="logoutNavItem">
-            
-      </div>
-      <ul class="navbar-nav customNavContainer">
-         
-        <li class="nav-item active">
-          <a class="nav-link" href="/home">Home</a>
-        </li>
-
-        {% if current_user.is_authenticated %}
-         <li class="nav-item">
-          <a class="nav-link" href="/link_entry">Convert</a>
-        </li>
-         <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
-        </li>
-        {% else %}
-          <li class="nav-item">
-          <a class="nav-link" href="/sign_up">Sign Up</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/sign_in">Sign In</a>
-        {% endif %}
-      </ul>
-    
-    </div>
+  <div class="header">
+  <nav>
+  <div class="logo">
+                <li class="active"><a href="/home"><span><img src="static/assets/img/logo.png" alt="Logo" style = "width:50%; height:20%;"></span></a></li>
+  </div>
+  <ul>              
+                <li><a href="/about"><span>About</span></a></li>
+                <li><a href="/sign_up"><span>Sign Up</span></a></li>
+                <li><a href="/sign_in"><span>Login</span></a></li>
+  </ul>
   </nav>
-
+  </div>
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {% for category, message in messages %}
-                <div class="alert alert-{{ category }} customAlertMessage">
+                <div class="alert alert-{{ category }}">
                     {{ message }}
                 </div>
             {% endfor %}
@@ -162,3 +34,36 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
+<style>
+
+.logo{
+  float: left
+}
+nav{
+  width: 100%;
+  height: 50px;
+  background-color: #0000;
+  line-height: 50px;
+  
+}
+nav ul{
+  float: right;
+  margin-right: 30px;
+}
+nav ul li{
+  list-style-type: none;
+  display: inline-block;
+  transition: 0.7s all;
+  family-font:  -apple-system,BlinkMacSystemFont,
+    "Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",
+    sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+nav ul li:hover{
+  background-color:white;
+}
+nav ul li a{
+  text-decoration: none;
+  color: grey;
+  padding: 30px;
+}
+</style>
