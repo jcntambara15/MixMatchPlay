@@ -75,6 +75,10 @@ def link_entry():
 def home():
     return render_template('home.html', subtitle='Home Page', text='This is the home page')
 
+@app.route("/about")
+def about():
+    return render_template('about.html', subtitle='About Us', text='This is our about page')
+
 @app.route('/logout')
 @login_required
 def logout():
