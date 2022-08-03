@@ -57,7 +57,7 @@ def signIn():
                 return redirect(url_for("link_entry"))
 
         # return '<h1>Invalid username or password</h1>'
-        flash(f'Invalid username or password')
+        flash(f'Invalid username or password, Please try again!')
 
     return render_template('sign_in.html', form=form)
 
