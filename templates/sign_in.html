@@ -7,7 +7,7 @@ Login
 {{super()}}
 <!-- <link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}"> -->
 {% endblock %}
-
+<body>
 {% block content %}
     <div class="content-section signin body">
         <div class="pageHeader">
@@ -53,4 +53,10 @@ Login
                 </div>
         </form>
     </div>
+</body>
+<style>
+    body {
+        background-color:#383838;
+    }
+    </style>
 {% endblock content %}

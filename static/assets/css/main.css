@@ -86,7 +86,7 @@
     }
     
     .siteName {
-        color: grey;
+        color: White;
         float: left;
        direction: rtl;
        text-align: left;
@@ -95,14 +95,17 @@
     }
 
     body {
-      background-color:#343434!important;
+      /* background-color:#343434!important; */
+      /* background-image: url("static/assets/img/backimg1.jpeg") !important; */
       color: white!important;
       margin: auto 10px;
       width: auto;
       background-size: cover;
     }
 
-
+  .body {
+    background-image: url("static/assets/img/backimg1.jpeg");
+  }
 
     .logo{
   float: left;
@@ -137,10 +140,11 @@ nav .change li{
     sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
 nav .change li:hover{
-  background-color:white;
+  background-color:rgb(138, 128, 128);
 }
 nav .change li a{
   text-decoration: none;
-  color: grey;
+  color: white;
   padding: 30px;
 }
+
