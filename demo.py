@@ -57,7 +57,7 @@ def signIn():
                 return redirect(url_for("link_entry"))
 
         # return '<h1>Invalid username or password</h1>'
-        flash(f'Invalid username or password')
+        flash(f'Invalid username or password, Please try again!')
 
     return render_template('sign_in.html', form=form)
 
@@ -67,7 +67,7 @@ def link_entry():
     form = SearchForm()
     if form.validate_on_submit():
         link = form.link.data
-        return render_template('link_entry.html', form=form)
+        return render_template('link_entry.html', form=form, playlist_name="Replace with actual name", spotify_link=link, Apple_music_link=" Actual Apple Music Link")
     return render_template('link_entry.html', form=form, name=current_user.username, playlist_name="Playlist Name", spotify_link="Spotify Link", Apple_music_link="Apple Music Link")
 
 @app.route("/")
