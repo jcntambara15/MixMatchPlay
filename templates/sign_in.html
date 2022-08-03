@@ -11,7 +11,7 @@ Login
 {% block content %}
     <div class="content-section signin body">
         <div class="pageHeader">
-            <p>Please Sign in</p>
+            <p>Please Log in!</p>
         </div>
         <form class="form-login" method="POST" action="/sign_in">
             {{ form.hidden_tag() }}
@@ -21,7 +21,7 @@ Login
                     {{ form.username.label(class="form-control-label") }}
                     {% if form.username.errors %}
                         {{ form.username(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback" style="text-align: center">
+                        <div class="invalid-feedback">
                         {% for error in form.username.errors%}
                             <span>{{error}}</span>
                         {% endfor %}
