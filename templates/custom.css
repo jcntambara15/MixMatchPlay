@@ -1,0 +1,43 @@
+  .customNavContainer {
+      display: flex!important;
+      width: 100%!important;
+      flex-direction: row!important;
+      padding: 0px 2em!important;
+      color:red!important;
+      align-content: flex-end!important;
+    }
+
+    .content-section.signin > form {
+      width:60%!important;
+      margin: auto!important;
+    }
+
+    .content-section.signin > form  .form-group{
+      padding-bottom:1.5em!important;
+    }
+
+    .alert.customAlertMessage {
+      text-align: center!important;
+      color: red!important;
+      font-weight: bold!important;
+    }
+
+    .pageHeader {
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      padding: 1em 0;
+    }
+
+    .logoutNavItem {
+      padding:0px 12px;
+      width: 120px
+    }
+
+    .logoutNavItem > a {
+      width: auto;
+      color: #ffffff8c;
+      padding:8px;
+      text-decoration: none;
+      transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+    }

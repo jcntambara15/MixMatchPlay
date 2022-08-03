@@ -5,11 +5,14 @@ Login
 {% endblock %}
 {% block styles %}
 {{super()}}
-<link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
+<!-- <link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}"> -->
 {% endblock %}
 
 {% block content %}
-    <div class="content-section">
+    <div class="content-section signin body">
+        <div class="pageHeader">
+            <p>Please Sign in</p>
+        </div>
         <form class="form-login" method="POST" action="/sign_in">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
@@ -18,7 +21,7 @@ Login
                     {{ form.username.label(class="form-control-label") }}
                     {% if form.username.errors %}
                         {{ form.username(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
+                        <div class="invalid-feedback" style="text-align: center">
                         {% for error in form.username.errors%}
                             <span>{{error}}</span>
                         {% endfor %}

@@ -1,27 +1,14 @@
 {% extends "layout.html" %}
 {% block content %}
-    <!-- <nav class="navbar navbar-inverse navbar-fixed-top"> -->
-      <!-- <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-          </button>
-        </div> -->
-        <!-- <div id="navbar" class="navbar-collapse collapse"> -->
-            <div>
-            <a href="{{ url_for('logout') }}">Log Out</a>
-        </div>
-      <!-- </div> -->
-    <!-- </nav> -->
-
-     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div class="body">
+     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main content-section">
           <p class="page-header">Welcome to MixMatchPlay, {{ name }}!</p>
-          <p><b>Enjoy keeping your Spotify playlist regardless of the web player you go to?<br> With MixMatchPlay, we've got you covered!</b></p>
-          <p>It's just magic, you can transfer your Spotify playlist to Apple Music here:</p>
+          <p><b>You are now ready to start your playlist conversion! How Exciting!</b></p>
+          <p class="convertmsg">Type or paste your Spotify playlist link below to get started:</p>
      </div>
-    <h1>Conversion page</h1>
-    <div class="content-section">
-        <form class="form-login" method="POST" action="/search_for_hotel">
+    <!-- <h1>Conversion page</h1> -->
+    <div class="content-section linkEntry">
+        <form class="form-login" method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
                 <!-- Link Field -->
@@ -40,9 +27,26 @@
                 </div>
 
                 <!-- Submit Button -->
-                <div class="form-group">
+                <div class="form-group sbmtbutton">
                     {{ form.submit(class="btn btn-outline-info") }}
                 </div>
         </form>
+
     </div>
+    <div>
+    <p class="main"> <b>Recent Playlists</b> </p>
+    <table id=”tab” class="main" style="width:40%">
+        <tr>
+            <th style="width:33%"></th>
+            <th style="width:33%"> <img src="static/assets/img/spotifylogo.png" style = "width:20%;"></th>
+            <th style="width:33%"> <img src="static/assets/img/apple.png" style = "width:60%;"></th>
+        </tr>
+        <tr>
+            <td style="width:33%"> {{ playlist_name }}</td>
+            <td style="width:33%">{{ spotify_link }}</td>
+            <td style="width:33%">{{ Apple_music_link }}</td>
+        </tr>
+    </table>
+</div>
+</div>
 {% endblock content %}

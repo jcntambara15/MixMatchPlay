@@ -67,8 +67,8 @@ def link_entry():
     form = SearchForm()
     if form.validate_on_submit():
         link = form.link.data
-        return render_template('link_entry.html', form=form, hotel_info = city_info)
-    return render_template('link_entry.html', form=form, name=current_user.username)
+        return render_template('link_entry.html', form=form)
+    return render_template('link_entry.html', form=form, name=current_user.username, playlist_name="Playlist Name", spotify_link="Spotify Link", Apple_music_link="Apple Music Link")
 
 @app.route("/")
 @app.route("/home")
