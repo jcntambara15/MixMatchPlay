@@ -28,11 +28,17 @@
 
      .alert.customAlertMessage {
       text-align: center!important;
-      color: rgb(113, 238, 221)!important;
+      color: #4CB2CD!important;
       font-weight: bold!important;
       width: 60%!important;
       margin: auto!important;
     }
+
+    .alert.alert-success {
+    --bs-alert-color: none; 
+    --bs-alert-bg: none; 
+    --bs-alert-border-color: none;
+}
 
     .pageHeader {
       text-align: center;
@@ -92,6 +98,11 @@
        text-align: left;
        display: inline;
        font-size: 1em;
+    }
+
+    .paddingBetweenCols td {
+    /* padding: 0 15px; */
+    padding:15px 15px 15px 15px;
     }
 
     body {
