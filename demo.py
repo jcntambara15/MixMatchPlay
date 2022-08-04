@@ -75,7 +75,7 @@ def link_entry():
 
 
         if link == 'https://open.spotify.com/playlist/7x44ySCq6r8VE7JwRzRkzb':
-            return render_template('link_entry.html', form=form, playlist_name =spotifyPlaylist.get_name(), spotify_link=link, Apple_music_link = " https://music.apple.com/us/playlist/hidden-gems/pl.u-GgA5e7RhxYlR1d", htmlString=htmlString)
+            return render_template('link_entry.html', form=form, playlist_name = str(spotifyPlaylist.get_name()).title(), spotify_link=link, Apple_music_link = " https://music.apple.com/us/playlist/hidden-gems/pl.u-GgA5e7RhxYlR1d", htmlString=htmlString)
         
         if link == "https://open.spotify.com/playlist/6FDmloGsp24kRk0Kx6nBvE":
             return render_template('link_entry.html', form=form, playlist_name1= str(spotifyPlaylist.get_name()), spotify_link1=link, Apple_music_link1=" https://music.apple.com/us/playlist/hidden-gems/pl.u-GgA5e7RhxYlR1d", htmlString=htmlString)
