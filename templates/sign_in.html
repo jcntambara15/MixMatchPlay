@@ -9,9 +9,10 @@ Login
 {% endblock %}
 <body>
 {% block content %}
+    <div class="signup_container">
     <div class="content-section signin body">
         <div class="pageHeader">
-            <p>Please Log in!</p>
+            <p>Log in</p>
         </div>
         <form class="form-login" method="POST" action="/sign_in">
             {{ form.hidden_tag() }}
@@ -53,13 +54,15 @@ Login
                 </div>
         </form>
     </div>
+    </div>
 </body>
 <style>
     body {
-        background-color:#383838;
+        background-color:black;
     }
     a {
         color:#4CB2CD;
     }
-    </style>
+    
+</style>
 {% endblock content %}

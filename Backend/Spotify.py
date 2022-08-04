@@ -74,8 +74,8 @@ class spotifyPlaylist:
     def get_html(self):
         htmlString = ''
         if self.number_of_songs > 0 and self.playlist_name != None:
-            htmlString += "<p class='main'> <b>" + str(self.playlist_name) + "</b> </p>" + \
-                "<p class='main'><img src='" + str(self.playlist_image) + "' class='img'> </p>" + \
+            htmlString += "<p class='main'> <b>" "</b> </p>" + \
+                "<p class='main' style='width:40%' ><img src='" + str(self.playlist_image) + "' class='img'> </p>" + \
                 "<table class='main' style='width:40%'>" + \
                 "<tr>" + \
                     "<th style='width:50%'> Songs </th>" + \
