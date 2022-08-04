@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mix-Match-Play</title>
+    <title><strong>Mix-Match-Play<strong></title>
   
 </head>
 <body>
@@ -12,13 +12,18 @@
     <div class= "intro">
         <center>
             <h1 class="display-4"><br></br>Welcome to Mix-Match-Play!</h1>
-            <p class="lead">Transfer your favorite playlists.<br>
+            <p class="lead"><strong>Transfer your favorite playlists.<br>
             Enjoy keeping your Spotify playlist regardless of the web player. 
             With MixMatchPlay, we've got you covered!
-            It's magic, transfer your Spotify playlist to Apple Music.<br></br>
-
-            <a href="/sign_up">
+            It's magic, transfer your Spotify playlist to Apple Music.<br></br></strong>
+            
+            {% if current_user.is_authenticated %}
+            <a href="/link_entry">
 	        <button>Start Now</button></p></a>
+            {% else %} 
+            <a href="/link_entry">
+            <button>Start Now</button></p></a>
+            {% endif %}
         </center>
     </div>
 
