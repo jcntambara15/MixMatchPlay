@@ -17,7 +17,7 @@ def main():
     print(x.playlist_name)
     z = Apple_music_client(x)
     for i in x.number_of_songs:
-        search_for_song(x.playlist_name+x.)
+        search_for_song()
 
 playlist_name1 = 'Hidden gems'
 appl1 = 'https://music.apple.com/us/playlist/hidden-gems/pl.u-GgA5e7RhxYlR1d'

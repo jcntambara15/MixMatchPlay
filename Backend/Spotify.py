@@ -4,7 +4,7 @@ import json
 import spotipy
 from spotipy import Spotify
 from spotipy.oauth2 import SpotifyClientCredentials
-from Database import *
+
 
 # TODO make sure to hide later using bash method 
 # os.environ.get('SPOTIFY_CLIENT_ID')
@@ -21,8 +21,8 @@ sp = spotipy.Spotify(auth_manager=auth_manager)
 
 
 class spotifyPlaylist:
-    def __init__(self):
-        self.playlist_url = None
+    def __init__(self, playlist_url = None ):
+        self.playlist_url = playlist_url
         self.playlist_name = None
         self.playlist_image = None
         self.number_of_songs = 0
@@ -31,11 +31,10 @@ class spotifyPlaylist:
         self.album_list = []
         
 
-    def get_playlist(self, url):
-        self.playlist_url = url
+    def get_playlist(self):
         playlist_dict = sp.playlist(self.playlist_url)
-        self.playlist_name = playlist_dict['name']
-        self.playlist_image = sp.playlist_cover_image(self.playlist_url)
+        self.set_name(playlist_dict['name'])
+        self.set_image(sp.playlist_cover_image(self.playlist_url))
         self.number_of_songs = playlist_dict["tracks"]["total"]
 
         tracks = playlist_dict["tracks"]
@@ -57,11 +56,53 @@ class spotifyPlaylist:
                 offset = i+1
             i+=1
 
+    def get_name(self):
+        return self.playlist_name
+
+    def set_name(self, name):
+        self.playlist_name = name
+
+    def get_url(self):
+        return self.playlist_url
+    
+    def set_image(self,image):
+        self.playlist_image = image[0]['url']
+    
+    def get_image(self):
+        return self.playlist_image
+
+    def get_html(self):
+        htmlString = ''
+        if self.number_of_songs > 0 and self.playlist_name != None:
+            htmlString += "<p class='main'> <b>" + str(self.playlist_name) + "</b> </p>" + \
+                "<p class='main'><img src='" + str(self.playlist_image) + "' class='img'> </p>" + \
+                "<table class='main' style='width:40%'>" + \
+                "<tr>" + \
+                    "<th style='width:50%'> Songs </th>" + \
+                    "<th style='width:50%'> Artists </th>" + \
+                "</tr>"
+
+            for i in range(self.number_of_songs):
+                htmlString += "" + \
+                "<tr>" + \
+                    "<th style='width:40%'>" + str(self.song_list[i]) + "</th>" + \
+                    "<th style='width:60%'>" + str(self.artists_list[i]) + "</th>" + \
+                "</tr>"
+
+            htmlString += "</table>"
+
+        return htmlString
+
+
+
+
+
 
 def main():
-    x = spotifyPlaylist()
-    x.get_playlist('https://open.spotify.com/playlist/1n4hHMWVTtXLTNiDC09JXg?si=b78a86aa7fce47d2')
+    x = spotifyPlaylist('https://open.spotify.com/playlist/1n4hHMWVTtXLTNiDC09JXg?si=b78a86aa7fce47d2')
+    x.get_playlist()
     print(x.playlist_name)
+    print(x.get_image())
 
     
 if __name__ == "__main__":

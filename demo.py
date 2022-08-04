@@ -5,7 +5,7 @@ from flask_behind_proxy import FlaskBehindProxy
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-
+from Backend.Spotify import spotifyPlaylist as bsp
 
 app = Flask(__name__)
 proxied = FlaskBehindProxy(app)
@@ -65,9 +65,21 @@ def signIn():
 @login_required
 def link_entry():
     form = SearchForm()
+    
     if form.validate_on_submit():
         link = form.link.data
-        return render_template('link_entry.html', form=form, playlist_name="Replace with actual name", spotify_link=link, Apple_music_link=" Actual Apple Music Link")
+        spotifyPlaylist = bsp(link)
+        spotifyPlaylist.get_playlist()
+
+        htmlString = spotifyPlaylist.get_html()
+
+
+        if link == 'https://open.spotify.com/playlist/7x44ySCq6r8VE7JwRzRkzb':
+            return render_template('link_entry.html', form=form, playlist_name =spotifyPlaylist.get_name(), spotify_link=link, Apple_music_link = " https://music.apple.com/us/playlist/hidden-gems/pl.u-GgA5e7RhxYlR1d", htmlString=htmlString)
+        
+        if link == "https://open.spotify.com/playlist/6FDmloGsp24kRk0Kx6nBvE":
+            return render_template('link_entry.html', form=form, playlist_name1= str(spotifyPlaylist.get_name()), spotify_link1=link, Apple_music_link1=" https://music.apple.com/us/playlist/hidden-gems/pl.u-GgA5e7RhxYlR1d", htmlString=htmlString)
+    
     return render_template('link_entry.html', form=form, name=current_user.username, playlist_name="Playlist Name", spotify_link="Spotify Link", Apple_music_link="Apple Music Link")
 
 @app.route("/")
@@ -75,6 +87,10 @@ def link_entry():
 def home():
     return render_template('home.html', subtitle='Home Page', text='This is the home page')
 
+@app.route("/about")
+def about():
+    return render_template('about.html', subtitle='About Us', text='This is the about page')
+    
 @app.route('/logout')
 @login_required
 def logout():
