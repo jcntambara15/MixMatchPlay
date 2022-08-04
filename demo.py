@@ -89,8 +89,8 @@ def home():
 
 @app.route("/about")
 def about():
-    return render_template('about.html', subtitle='About Us', text='This is the about page')
-    
+    return render_template('about.html', subtitle='About Us', text='This is our about page')
+
 @app.route('/logout')
 @login_required
 def logout():

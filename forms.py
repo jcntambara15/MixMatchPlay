@@ -31,6 +31,6 @@ class SearchForm(FlaskForm):
     link = StringField('',
                        validators=[DataRequired()])
 
-    submit = SubmitField('Submit')
+    submit = SubmitField('Convert')
 
 
