@@ -80,7 +80,7 @@ def link_entry():
         if link == "https://open.spotify.com/playlist/6FDmloGsp24kRk0Kx6nBvE":
             return render_template('link_entry.html', form=form, playlist_name1= str(spotifyPlaylist.get_name()), spotify_link1=link, Apple_music_link1=" https://music.apple.com/us/playlist/hidden-gems/pl.u-GgA5e7RhxYlR1d", htmlString=htmlString)
     
-    return render_template('link_entry.html', form=form, name=current_user.username, playlist_name="Playlist Name", spotify_link="Spotify Link", Apple_music_link="Apple Music Link")
+    return render_template('link_entry.html', form=form, name=current_user.username, playlist_name="", spotify_link="", Apple_music_link="")
 
 @app.route("/")
 @app.route("/home")
