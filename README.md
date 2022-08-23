@@ -8,7 +8,7 @@ By: Ben, Chris, JC, Levi
 
 ### Libraries: [requests](https://pypi.org/project/requests/),
 ### Frameworks: [Flask](https://flask.palletsprojects.com/en/2.1.x/)
-### APIs used: [Spotify][Apple](https://developer.spotify.com/documentation/web-api/quick-start/)(https://developer.spotify.com/documentation/web-api/quick-start/)
+### APIs used: [Spotify](https://developer.spotify.com/documentation/web-api/quick-start/)
 ### Testing Modules: [unittest](https://docs.python.org/3/library/unittest.html)
 
 # Understanding of code:
